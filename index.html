@@ -69,6 +69,8 @@
 			.startInit("14024293-9df2-4fbf-9c61-6c6edfabb7cf")
 			.handleNotificationOpened(notificationOpenedCallback)
 			.endInit();
+			
+		  window.plugins.OneSignal.setSubscription(true);
 		  window.plugins.OneSignal.enableNotificationsWhenActive(true);
 		  // Call syncHashedEmail anywhere in your app if you have the user's email.
 		  // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
