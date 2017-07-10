@@ -55,7 +55,12 @@
     <script type="text/javascript">
         app.initialize();
 		
-		
+		function registerForPushNotification() {
+			console.log("Register button pressed");
+			window.plugins.OneSignal.registerForPushNotifications();
+			// Only works if user previously subscribed and you used setSubscription(false) below
+			window.plugins.OneSignal.setSubscription(true);
+		}
 		document.addEventListener('deviceready', function () {
 		  // Enable to debug issues.
 		  window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
@@ -68,10 +73,13 @@
 		  window.plugins.OneSignal
 			.startInit("14024293-9df2-4fbf-9c61-6c6edfabb7cf")
 			.handleNotificationOpened(notificationOpenedCallback)
+			.inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
 			.endInit();
-			
-		  window.plugins.OneSignal.setSubscription(true);
-		  window.plugins.OneSignal.enableNotificationsWhenActive(true);
+		  
+		  console.log("baru buka");
+		  registerForPushNotification();
+		  //window.plugins.OneSignal.setSubscription(true);
+		 // window.plugins.OneSignal.enableNotificationsWhenActive(true);
 		  // Call syncHashedEmail anywhere in your app if you have the user's email.
 		  // This improves the effectiveness of OneSignal's "best-time" notification scheduling feature.
 		  // window.plugins.OneSignal.syncHashedEmail(userEmail);
