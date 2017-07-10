@@ -54,6 +54,27 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+		
+		
+		document.addEventListener('deviceready', function () {
+		 window.plugins.OneSignal.setLogLevel({logLevel: 0, visualLevel: 0});
+		  
+		  //the callBack function called when we click on the notification received
+		  var notificationOpenedCallback = function(jsonData) 
+		  {
+			alert("Notification is received!" + JSON.stringify(jsonData));
+		  };
+
+		  //init function to use OneSignal service and GCM sender ID
+		  window.plugins.OneSignal.init("14024293-9df2-4fbf-9c61-6c6edfabb7cf",
+										{googleProjectNumber: "469286236539"},
+										notificationOpenedCallback);
+		  //subscribe to the service
+		  window.plugins.OneSignal.setSubscription(true);
+		  //activating the reception of push notification when the app is working also
+		  window.plugins.OneSignal.enableNotificationsWhenActive(true);
+		  
+		}, false);
     </script>
 </body>
 
