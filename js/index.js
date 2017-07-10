@@ -44,11 +44,13 @@ var app = {
 		  };
 
 		  //init function to use OneSignal service and GCM sender ID
-		  window.plugins.OneSignal.init("14024293-9df2-4fbf-9c61-6c6edfabb7cf",notificationOpenedCallback);
+		  window.plugins.OneSignal.init("14024293-9df2-4fbf-9c61-6c6edfabb7cf",
+										{googleProjectNumber: "469286236539"},
+										notificationOpenedCallback);
 		  //subscribe to the service
 		  window.plugins.OneSignal.setSubscription(true);
 		  //activating the reception of push notification when the app is working also
-		  window.plugins.OneSignal.enableNotificationsWhenActive(true);		
+		  window.plugins.OneSignal.enableNotificationsWhenActive(true);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
