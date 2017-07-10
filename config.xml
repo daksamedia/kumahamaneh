@@ -23,7 +23,7 @@
     <preference name="DisallowOverscroll"         value="true" />
     <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-minSdkVersion"      value="15" />
-	
+	<preference name="android-build-tool" value="gradle" />
 	<!-- Window Phone 8.1 builds must use cli-6.1.0+ above -->
 	<preference name="windows-appx-target" value="8.1-phone" />
 	<preference name="WindowsToastCapable" value="true" />
