@@ -67,8 +67,8 @@ var app = {
           })
           .handleNotificationOpened(function(jsonData) {
             //alert("Notification opened: \n" + JSON.stringify(jsonData));
-			var url = jsonData.action.notification.payload.additionalData.url;
-			var id = jsonData.action.notification.payload.additionalData.id;
+			var url = jsonData.notification.payload.additionalData.url;
+			var id = jsonData.notification.payload.additionalData.id;
             window.location.href=url + '.html?id=' + id;
 			console.log('didOpenRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
           })
