@@ -67,9 +67,15 @@ var app = {
           })
           .handleNotificationOpened(function(jsonData) {
             //alert("Notification opened: \n" + JSON.stringify(jsonData));
-			var url = jsonData.notification.payload.additionalData.url;
-			var id = jsonData.notification.payload.additionalData.id;
-            window.location.href=url + '.html?id=' + id;
+			var additional = jsonData.notification.payload.additionalData;
+			if(additional.length!=0){
+				var url = jsonData.notification.payload.additionalData.url;
+				var id = jsonData.notification.payload.additionalData.id;
+				window.location.href=url + '.html?id=' + id;
+			}else{
+				alert("Notification opened: \n" + JSON.stringify(jsonData));
+			}
+			
 			console.log('didOpenRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
           })
           .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
