@@ -62,12 +62,15 @@ var app = {
         window.plugins.OneSignal
           .startInit("14024293-9df2-4fbf-9c61-6c6edfabb7cf")
           .handleNotificationReceived(function(jsonData) {
-            alert("Notification received: \n" + JSON.stringify(jsonData));
+            //alert("Notification received: \n" + JSON.stringify(jsonData));
             console.log('Did I receive a notification: ' + JSON.stringify(jsonData));
           })
           .handleNotificationOpened(function(jsonData) {
-            alert("Notification opened: \n" + JSON.stringify(jsonData));
-            console.log('didOpenRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
+            //alert("Notification opened: \n" + JSON.stringify(jsonData));
+			var url = jsonData.action.notification.payload.additionalData.url;
+			var id = jsonData.action.notification.payload.additionalData.id;
+            window.location.href=url + '.html?id=' + id;
+			console.log('didOpenRemoteNotificationCallBack: ' + JSON.stringify(jsonData));
           })
           .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.InAppAlert)
           .iOSSettings(iosSettings)
